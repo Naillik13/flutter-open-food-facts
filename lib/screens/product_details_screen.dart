@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yuka/widgets/image_header_widget.dart';
+import 'package:yuka/res/app_images.dart';
+import 'package:yuka/widgets/nutriscore_banner_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   @override
@@ -18,7 +19,15 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImageHeaderWidget();
+    return Stack(
+      children: [
+        Image.asset(AppImages.pancakes),
+        Padding(
+          padding: const EdgeInsets.only(top: 260.0),
+          child: SingleChildScrollView(child: NutriscoreBannerWidget()),
+        ),
+      ],
+    );
   }
 }
 
