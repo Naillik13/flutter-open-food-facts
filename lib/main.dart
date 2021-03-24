@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
-import 'package:yuka/screens/product_details_screen.dart';
+import 'package:yuka/screens/empty_list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,8 +28,12 @@ class MyApp extends StatelessWidget {
           backgroundColor: AppColors.white,
           actionsIconTheme: IconThemeData(color: AppColors.blue),
         ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: AppColors.blue,
+          unselectedItemColor: AppColors.gray2,
+        ),
       ),
-      home: ProductDetailsScreen(),
+      home: EmptyListScreen(),
     );
   }
 }

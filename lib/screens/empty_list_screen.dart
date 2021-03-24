@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yuka/app_colors.dart';
 import 'package:yuka/app_icons.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
+import 'package:yuka/screens/product_details_screen.dart';
 
 class EmptyListScreen extends StatelessWidget {
   @override
@@ -18,7 +19,9 @@ class EmptyListScreen extends StatelessWidget {
             padding: EdgeInsets.only(right: 10.0),
             child: IconButton(
               icon: Icon(AppIcons.barcode),
-              onPressed: () => {},
+              onPressed: () {
+                _openProductDetailsScreen(context, 123456789);
+              },
             ),
           )
         ],
@@ -43,7 +46,9 @@ class EmptyListScreen extends StatelessWidget {
             ),
             SizedBox(height: screenHeight * 0.1),
             TextButton(
-              onPressed: () => {},
+              onPressed: () {
+                _openProductDetailsScreen(context, 123456789);
+              },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -62,6 +67,15 @@ class EmptyListScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _openProductDetailsScreen(BuildContext context, int barcode) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProductDetailsScreen(barcode: barcode),
       ),
     );
   }
