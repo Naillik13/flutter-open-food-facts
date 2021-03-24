@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yuka/screens/product_details_screen.dart';
+import 'package:yuka/screens/tabs/details_tab.dart';
 
 enum ProductDetailsCurrentTab {
   summary,

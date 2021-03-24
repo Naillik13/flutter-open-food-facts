@@ -20,7 +20,7 @@ class EmptyListScreen extends StatelessWidget {
             child: IconButton(
               icon: Icon(AppIcons.barcode),
               onPressed: () {
-                _openProductDetailsScreen(context, 123456789);
+                _openProductDetailsScreen(context, 5000159484695);
               },
             ),
           )
@@ -47,7 +47,7 @@ class EmptyListScreen extends StatelessWidget {
             SizedBox(height: screenHeight * 0.1),
             TextButton(
               onPressed: () {
-                _openProductDetailsScreen(context, 123456789);
+                _openProductDetailsScreen(context, 5000159484695);
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,

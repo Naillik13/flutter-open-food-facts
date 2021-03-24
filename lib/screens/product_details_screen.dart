@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:yuka/app_colors.dart';
 import 'package:yuka/enum/product_details_current_tab.dart';
-import 'package:yuka/res/app_images.dart';
-import 'package:yuka/widgets/product_details_widget.dart';
 
 import '../app_icons.dart';
 
@@ -13,11 +12,16 @@ class ProductDetailsScreen extends StatefulWidget {
   ProductDetailsScreen({required this.barcode});
 
   @override
-  _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
+  _ProductDetailsScreenState createState() =>
+      _ProductDetailsScreenState(barcode: barcode);
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   ProductDetailsCurrentTab currentTab = ProductDetailsCurrentTab.summary;
+
+  final int barcode;
+
+  _ProductDetailsScreenState({required this.barcode});
 
   void _changeTab(int tabIndex) {
     setState(() {
@@ -34,7 +38,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         actions: [
           IconButton(
             icon: Icon(AppIcons.share, color: AppColors.white),
-            onPressed: () => {},
+            onPressed: () =>
+                {Share.share('https://fr.openfoodfacts.org/produit/$barcode')},
           ),
         ],
       ),
@@ -61,21 +66,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         onTap: _changeTab,
       ),
       body: getProductDetailsCurrentTabWidget(currentTab),
-    );
-  }
-}
-
-class DetailsTab extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(AppImages.pancakes),
-        Padding(
-          padding: const EdgeInsets.only(top: 260.0),
-          child: ProductDetailsWidget(),
-        ),
-      ],
     );
   }
 }
