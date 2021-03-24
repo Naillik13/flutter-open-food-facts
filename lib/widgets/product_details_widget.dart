@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
-import 'package:yuka/res/app_images.dart';
+import 'package:yuka/utils/quality_score_util.dart';
 import 'package:yuka/widgets/separator_widget.dart';
-
-import '../app_icons.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   @override
@@ -37,101 +35,128 @@ class NutriscoreBanner extends StatelessWidget {
           IntrinsicHeight(
             child: Row(
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Nutri-Score',
-                          style:
-                              Theme.of(context).textTheme.headline6?.copyWith(
-                                    color: AppColors.blue,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                        ),
-                        const SizedBox(height: 10.0),
-                        Image.asset(
-                          AppImages.nutriscoreA,
-                          height: 65.0,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                ProductNutriscore(nutriscore: 'C'),
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0),
                   child: SeparatorWidget(axis: Axis.vertical),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Groupe NOVA',
-                          style:
-                              Theme.of(context).textTheme.headline6?.copyWith(
-                                    color: AppColors.blue,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                        ),
-                        const SizedBox(height: 10.0),
-                        Text(
-                          'Produits alimentaires et boissons ultra-transformés',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16.0,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                ProductNovaScore(novaScore: 1),
               ],
             ),
           ),
           SeparatorWidget(axis: Axis.horizontal),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 30.0,
-              right: 30.0,
-              bottom: 30.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'EcoScore',
-                  style: Theme.of(context).textTheme.headline6?.copyWith(
-                        color: AppColors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                const SizedBox(height: 10.0),
-                Row(
-                  children: [
-                    Icon(
-                      AppIcons.ecoscore_d,
-                      color: AppColors.ecoScoreD,
-                    ),
-                    const SizedBox(width: 10.0),
-                    Text(
-                      'Impact environnemental élevé',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16.0,
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
+          ProductEcoScore(ecoScore: 'E'),
         ],
+      ),
+    );
+  }
+}
+
+class ProductEcoScore extends StatelessWidget {
+  final String ecoScore;
+
+  const ProductEcoScore({required this.ecoScore});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 30.0,
+        right: 30.0,
+        bottom: 30.0,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'EcoScore',
+            style: Theme.of(context).textTheme.headline6?.copyWith(
+                  color: AppColors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: 10.0),
+          Row(
+            children: [
+              getEcoScoreIcon(ecoScore),
+              const SizedBox(width: 10.0),
+              Text(
+                getEcoScoreHeadline(ecoScore),
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16.0,
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ProductNovaScore extends StatelessWidget {
+  final int novaScore;
+
+  const ProductNovaScore({required this.novaScore});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Groupe NOVA',
+              style: Theme.of(context).textTheme.headline6?.copyWith(
+                    color: AppColors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 10.0),
+            Text(
+              getNovaScoreHeadline(novaScore),
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16.0,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProductNutriscore extends StatelessWidget {
+  final String nutriscore;
+
+  const ProductNutriscore({required this.nutriscore});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Nutri-Score',
+              style: Theme.of(context).textTheme.headline6?.copyWith(
+                    color: AppColors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 10.0),
+            Image.asset(
+              getNutriscoreImagePath(nutriscore),
+              height: 65.0,
+            )
+          ],
+        ),
       ),
     );
   }
