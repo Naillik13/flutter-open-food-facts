@@ -1,6 +1,7 @@
 class AppImages {
   AppImages._();
 
+  static const String pancakes = 'res/drawables/pancakes.jpg';
   static const String nutriscoreD = 'res/drawables/nutriscore_d.png';
   static const String nutriscoreE = 'res/drawables/nutriscore_e.png';
   static const String nutriscoreA = 'res/drawables/nutriscore_a.png';
