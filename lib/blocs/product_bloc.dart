@@ -53,7 +53,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           write: <String>['*'],
         );
       } catch (err) {
-        print(err);
+        // print(err);
       }
 
       yield ResultProductState(product: product);

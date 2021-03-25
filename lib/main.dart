@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
-import 'package:yuka/screens/empty_list_screen.dart';
+import 'package:yuka/screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           unselectedItemColor: AppColors.gray2,
         ),
       ),
-      home: EmptyListScreen(),
+      home: HomeScreen(),
     );
   }
 }
