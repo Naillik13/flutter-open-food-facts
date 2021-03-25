@@ -1,4 +1,4 @@
-import '../product.dart';
+import '../models/product.dart';
 
 abstract class ProductState {}
 

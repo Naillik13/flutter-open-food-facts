@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
-import 'package:yuka/product.dart';
+import 'package:yuka/models/product.dart';
 import 'package:yuka/utils/quality_score_util.dart';
 import 'package:yuka/widgets/separator_widget.dart';
 

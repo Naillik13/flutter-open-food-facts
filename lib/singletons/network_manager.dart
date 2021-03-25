@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../product.dart';
+import '../models/product.dart';
 
 class NetworkManager {
   static final NetworkManager _networkManager = NetworkManager._internal();
