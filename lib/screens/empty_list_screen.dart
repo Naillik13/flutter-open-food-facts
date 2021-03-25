@@ -14,13 +14,13 @@ class EmptyListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Mes scans'),
-        actions: [
+        actions: <Widget>[
           Padding(
             padding: EdgeInsets.only(right: 10.0),
             child: IconButton(
               icon: Icon(AppIcons.barcode),
               onPressed: () {
-                _openProductDetailsScreen(context, 5000159484695);
+                _openProductDetailsScreen(context, '5000159484695');
               },
             ),
           )
@@ -29,7 +29,7 @@ class EmptyListScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children: <Widget>[
             SvgPicture.asset(AppVectorialImages.illEmpty),
             SizedBox(height: screenHeight * 0.1),
             FractionallySizedBox(
@@ -47,11 +47,11 @@ class EmptyListScreen extends StatelessWidget {
             SizedBox(height: screenHeight * 0.1),
             TextButton(
               onPressed: () {
-                _openProductDetailsScreen(context, 5000159484695);
+                _openProductDetailsScreen(context, '5000159484695');
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                children: <Widget>[
                   Text('Commencer'.toUpperCase()),
                   const SizedBox(width: 20.0),
                   Icon(Icons.arrow_right_alt)
@@ -71,11 +71,12 @@ class EmptyListScreen extends StatelessWidget {
     );
   }
 
-  void _openProductDetailsScreen(BuildContext context, int barcode) {
+  void _openProductDetailsScreen(BuildContext context, String barcode) {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => ProductDetailsScreen(barcode: barcode),
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) =>
+            ProductDetailsScreen(barcode: barcode),
       ),
     );
   }

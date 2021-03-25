@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/screens/tabs/counter_tab.dart';
 import 'package:yuka/screens/tabs/details_tab.dart';
 
 enum ProductDetailsCurrentTab {
@@ -45,7 +46,7 @@ Widget getProductDetailsCurrentTabWidget(ProductDetailsCurrentTab currentTab) {
     case ProductDetailsCurrentTab.summary:
       return DetailsTab();
     case ProductDetailsCurrentTab.info:
-      return DetailsTab();
+      return CounterTab();
     case ProductDetailsCurrentTab.nutrition:
       return DetailsTab();
     case ProductDetailsCurrentTab.nutritionValues:

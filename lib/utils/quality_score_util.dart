@@ -25,32 +25,32 @@ Icon getEcoScoreIcon(String ecoScore) {
   switch (ecoScore) {
     case 'A':
       return Icon(
-        AppIcons.ecoscore_a,
+        AppIcons.ecoscoreA,
         color: AppColors.ecoScoreA,
       );
     case 'B':
       return Icon(
-        AppIcons.ecoscore_b,
+        AppIcons.ecoscoreB,
         color: AppColors.ecoScoreB,
       );
     case 'C':
       return Icon(
-        AppIcons.ecoscore_c,
+        AppIcons.ecoscoreC,
         color: AppColors.ecoScoreC,
       );
     case 'D':
       return Icon(
-        AppIcons.ecoscore_d,
+        AppIcons.ecoscoreD,
         color: AppColors.ecoScoreD,
       );
     case 'E':
       return Icon(
-        AppIcons.ecoscore_e,
+        AppIcons.ecoscoreE,
         color: AppColors.ecoScoreE,
       );
     default:
       return Icon(
-        AppIcons.ecoscore_e,
+        AppIcons.ecoscoreE,
         color: AppColors.ecoScoreE,
       );
   }

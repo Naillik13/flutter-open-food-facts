@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: [
+      children: <Widget>[
         Placeholder(
           fallbackHeight: 290.0,
         ),
@@ -43,11 +43,11 @@ class Header extends StatelessWidget {
         vertical: 40.0,
       ),
       child: Row(
-        children: [
+        children: <Widget>[
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(
                   'Text 1',
                   style: Theme.of(context).textTheme.headline5,
@@ -79,7 +79,7 @@ class ButtonRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
+      children: <Widget>[
         Button(
           icon: Icons.call,
           label: 'Call',
@@ -107,12 +107,10 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       customBorder: CircleBorder(),
-      onTap: () {
-        print('Clic sur $label');
-      },
+      onTap: () {},
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        children: <Widget>[
           Icon(icon, color: Colors.blue),
           const SizedBox(height: 10.0),
           Text(label, style: TextStyle(color: Colors.blue))

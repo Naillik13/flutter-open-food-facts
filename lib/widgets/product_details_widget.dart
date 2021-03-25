@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
+import 'package:yuka/product.dart';
 import 'package:yuka/utils/quality_score_util.dart';
 import 'package:yuka/widgets/separator_widget.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
+  final Product product;
+
+  ProductDetailsWidget({required this.product});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,8 +20,8 @@ class ProductDetailsWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ProductTitle(),
+          children: <Widget>[
+            ProductTitle(product: product),
             NutriscoreBanner(),
           ],
         ),
@@ -31,10 +36,10 @@ class NutriscoreBanner extends StatelessWidget {
     return Container(
       color: AppColors.gray1,
       child: Column(
-        children: [
+        children: <Widget>[
           IntrinsicHeight(
             child: Row(
-              children: [
+              children: <Widget>[
                 ProductNutriscore(nutriscore: 'C'),
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0),
@@ -67,7 +72,7 @@ class ProductEcoScore extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Text(
             'EcoScore',
             style: Theme.of(context).textTheme.headline6?.copyWith(
@@ -77,7 +82,7 @@ class ProductEcoScore extends StatelessWidget {
           ),
           const SizedBox(height: 10.0),
           Row(
-            children: [
+            children: <Widget>[
               getEcoScoreIcon(ecoScore),
               const SizedBox(width: 10.0),
               Text(
@@ -107,7 +112,7 @@ class ProductNovaScore extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Text(
               'Groupe NOVA',
               style: Theme.of(context).textTheme.headline6?.copyWith(
@@ -142,7 +147,7 @@ class ProductNutriscore extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Text(
               'Nutri-Score',
               style: Theme.of(context).textTheme.headline6?.copyWith(
@@ -163,6 +168,10 @@ class ProductNutriscore extends StatelessWidget {
 }
 
 class ProductTitle extends StatelessWidget {
+  final Product product;
+
+  const ProductTitle({required this.product});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -172,9 +181,9 @@ class ProductTitle extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Text(
-            'Petits pois et carottes',
+            product.barcode,
             style: Theme.of(context).textTheme.headline4?.copyWith(
                   color: AppColors.blueDark,
                   fontWeight: FontWeight.bold,
