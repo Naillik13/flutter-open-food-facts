@@ -36,10 +36,9 @@ class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (picture != null) {
-      Image.network(picture!);
+      return Image.network(picture!);
     } else {
-      Image.asset(AppImages.pancakes);
+      return Image.asset(AppImages.pancakes);
     }
-    return Container();
   }
 }

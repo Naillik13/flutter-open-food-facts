@@ -42,18 +42,18 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
         Database database = Database(client);
 
-        // await database.createDocument(
-        //   collectionId: '605c9fa37267d',
-        //   data: <String, String>{
-        //     'Barcode': product.barcode,
-        //     'Name': product.name ?? '',
-        //     'Brand': product.brands![0],
-        //     'Thumbnail': product.picture ?? '',
-        //     'Nutriscore': product.nutriScore.toString().split('.')[1],
-        //   },
-        //   read: <String>['*'],
-        //   write: <String>['*'],
-        // );
+        await database.createDocument(
+          collectionId: '605c9fa37267d',
+          data: <String, String>{
+            'Barcode': product.barcode,
+            'Name': product.name ?? '',
+            'Brand': product.brands![0],
+            'Thumbnail': product.picture ?? '',
+            'Nutriscore': product.nutriScore.toString().split('.')[1],
+          },
+          read: <String>['*'],
+          write: <String>['*'],
+        );
       } on AppwriteException catch (err) {
         log('ERROR - ${err.message}', level: 50, error: err);
       }

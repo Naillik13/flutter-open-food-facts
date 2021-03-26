@@ -22,6 +22,23 @@ String getNutriscoreImagePath(ProductNutriscore? nutriscore) {
   }
 }
 
+Color getNutriscoreColor(ProductNutriscore? nutriscore) {
+  switch (nutriscore) {
+    case ProductNutriscore.A:
+      return AppColors.nutriscoreA;
+    case ProductNutriscore.B:
+      return AppColors.nutriscoreB;
+    case ProductNutriscore.C:
+      return AppColors.nutriscoreC;
+    case ProductNutriscore.D:
+      return AppColors.nutriscoreD;
+    case ProductNutriscore.E:
+      return AppColors.nutriscoreE;
+    default:
+      return AppColors.gray2;
+  }
+}
+
 Icon getEcoScoreIcon(ProductEcoScore? ecoScore) {
   switch (ecoScore) {
     case ProductEcoScore.A:
