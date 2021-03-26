@@ -47,6 +47,12 @@ class Product {
       brands: (response['brands'] as List<dynamic>)
           .map((dynamic e) => e.toString())
           .toList(),
+      nutriScore: ProductNutriscore.values.firstWhere((dynamic e) =>
+          e.toString() == 'ProductNutriscore.${response['nutriScore']}'),
+      novaScore: ProductNovaScore.values.firstWhere((dynamic e) =>
+          e.toString() == 'ProductNovaScore.group${response['novaScore']}'),
+      ecoScore: ProductEcoScore.values.firstWhere((dynamic e) =>
+          e.toString() == 'ProductEcoScore.${response['ecoScoreGrade']}'),
     );
   }
 }

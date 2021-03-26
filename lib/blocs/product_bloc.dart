@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuka/singletons/network_manager.dart';
@@ -33,27 +35,27 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           .setSelfSigned();
 
       try {
-        dynamic createSession = await Account(client)
+        await Account(client)
             .createSession(email: 'email@example.com', password: 'password');
 
         await client.init();
 
         Database database = Database(client);
 
-        await database.createDocument(
-          collectionId: '605c9fa37267d',
-          data: <String, String>{
-            'Barcode': product.barcode,
-            'Name': product.name ?? '',
-            'Brand': product.brands![0],
-            'Thumbnail': product.picture ?? '',
-            'Nutriscore': product.nutriScore.toString(),
-          },
-          read: <String>['*'],
-          write: <String>['*'],
-        );
-      } catch (err) {
-        // print(err);
+        // await database.createDocument(
+        //   collectionId: '605c9fa37267d',
+        //   data: <String, String>{
+        //     'Barcode': product.barcode,
+        //     'Name': product.name ?? '',
+        //     'Brand': product.brands![0],
+        //     'Thumbnail': product.picture ?? '',
+        //     'Nutriscore': product.nutriScore.toString().split('.')[1],
+        //   },
+        //   read: <String>['*'],
+        //   write: <String>['*'],
+        // );
+      } on AppwriteException catch (err) {
+        log('ERROR - ${err.message}', level: 50, error: err);
       }
 
       yield ResultProductState(product: product);

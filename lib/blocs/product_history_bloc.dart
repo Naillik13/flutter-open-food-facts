@@ -1,4 +1,6 @@
 // Bloc
+import 'dart:developer';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yuka/blocs/events/list_products_event.dart';
@@ -27,7 +29,7 @@ class ProductsHistoryBloc extends Bloc<ProductsListEvent, ProductsListState> {
           .setSelfSigned();
 
       try {
-        dynamic createSession = await Account(client)
+        await Account(client)
             .createSession(email: 'email@example.com', password: 'password');
 
         await client.init();
@@ -44,8 +46,8 @@ class ProductsHistoryBloc extends Bloc<ProductsListEvent, ProductsListState> {
                 .toList(growable: false);
 
         yield ResultProductsListState(history);
-      } catch (err) {
-        // print(err);
+      } on AppwriteException catch (err) {
+        log('ERROR - ${err.message}', level: 50, error: err);
       }
     }
   }

@@ -1,49 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/models/product.dart';
 import 'package:yuka/res/app_images.dart';
 
 import '../app_colors.dart';
 import '../app_icons.dart';
 
-String getNutriscoreImagePath(String nutriscore) {
+String getNutriscoreImagePath(ProductNutriscore? nutriscore) {
   switch (nutriscore) {
-    case 'A':
+    case ProductNutriscore.A:
       return AppImages.nutriscoreA;
-    case 'B':
+    case ProductNutriscore.B:
       return AppImages.nutriscoreB;
-    case 'C':
+    case ProductNutriscore.C:
       return AppImages.nutriscoreC;
-    case 'D':
+    case ProductNutriscore.D:
       return AppImages.nutriscoreD;
-    case 'E':
+    case ProductNutriscore.E:
       return AppImages.nutriscoreE;
     default:
       return AppImages.nutriscoreE;
   }
 }
 
-Icon getEcoScoreIcon(String ecoScore) {
+Icon getEcoScoreIcon(ProductEcoScore? ecoScore) {
   switch (ecoScore) {
-    case 'A':
+    case ProductEcoScore.A:
       return Icon(
         AppIcons.ecoscoreA,
         color: AppColors.ecoScoreA,
       );
-    case 'B':
+    case ProductEcoScore.B:
       return Icon(
         AppIcons.ecoscoreB,
         color: AppColors.ecoScoreB,
       );
-    case 'C':
+    case ProductEcoScore.C:
       return Icon(
         AppIcons.ecoscoreC,
         color: AppColors.ecoScoreC,
       );
-    case 'D':
+    case ProductEcoScore.D:
       return Icon(
         AppIcons.ecoscoreD,
         color: AppColors.ecoScoreD,
       );
-    case 'E':
+    case ProductEcoScore.E:
       return Icon(
         AppIcons.ecoscoreE,
         color: AppColors.ecoScoreE,
@@ -56,34 +57,34 @@ Icon getEcoScoreIcon(String ecoScore) {
   }
 }
 
-String getEcoScoreHeadline(String ecoScore) {
+String getEcoScoreHeadline(ProductEcoScore? ecoScore) {
   switch (ecoScore) {
-    case 'A':
+    case ProductEcoScore.A:
       return 'Très faible impact environnemental';
-    case 'B':
+    case ProductEcoScore.B:
       return 'Faible impact environnemental';
-    case 'C':
+    case ProductEcoScore.C:
       return 'Impact modéré sur l\'environnement';
-    case 'D':
+    case ProductEcoScore.D:
       return 'Impact environnemental élevé';
-    case 'E':
+    case ProductEcoScore.E:
       return 'Impact environnemental très élevé';
     default:
-      return 'Impact environnemental très élevé';
+      return 'Aucune information';
   }
 }
 
-String getNovaScoreHeadline(int novaScore) {
+String getNovaScoreHeadline(ProductNovaScore? novaScore) {
   switch (novaScore) {
-    case 1:
+    case ProductNovaScore.group1:
       return 'Aliments non transformés ou transformés minimalement';
-    case 2:
+    case ProductNovaScore.group2:
       return 'Ingrédients culinaires transformés';
-    case 3:
+    case ProductNovaScore.group3:
       return 'Aliments transformés';
-    case 4:
+    case ProductNovaScore.group4:
       return 'Produits alimentaires et boissons ultra-transformés';
     default:
-      return 'Produits alimentaires et boissons ultra-transformés';
+      return 'Aucune information';
   }
 }

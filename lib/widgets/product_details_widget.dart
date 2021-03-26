@@ -22,7 +22,7 @@ class ProductDetailsWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ProductTitle(product: product),
-            NutriscoreBanner(),
+            NutriscoreBanner(product: product),
           ],
         ),
       ),
@@ -31,6 +31,10 @@ class ProductDetailsWidget extends StatelessWidget {
 }
 
 class NutriscoreBanner extends StatelessWidget {
+  final Product product;
+
+  const NutriscoreBanner({required this.product});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,27 +44,27 @@ class NutriscoreBanner extends StatelessWidget {
           IntrinsicHeight(
             child: Row(
               children: <Widget>[
-                ProductNutriscore(nutriscore: 'C'),
+                ProductNutriscoreWidget(nutriscore: product.nutriScore),
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0),
                   child: SeparatorWidget(axis: Axis.vertical),
                 ),
-                ProductNovaScore(novaScore: 1),
+                ProductNovaScoreWidget(novaScore: product.novaScore),
               ],
             ),
           ),
           SeparatorWidget(axis: Axis.horizontal),
-          ProductEcoScore(ecoScore: 'E'),
+          ProductEcoScoreWidget(ecoScore: product.ecoScore),
         ],
       ),
     );
   }
 }
 
-class ProductEcoScore extends StatelessWidget {
-  final String ecoScore;
+class ProductEcoScoreWidget extends StatelessWidget {
+  final ProductEcoScore? ecoScore;
 
-  const ProductEcoScore({required this.ecoScore});
+  const ProductEcoScoreWidget({required this.ecoScore});
 
   @override
   Widget build(BuildContext context) {
@@ -100,10 +104,10 @@ class ProductEcoScore extends StatelessWidget {
   }
 }
 
-class ProductNovaScore extends StatelessWidget {
-  final int novaScore;
+class ProductNovaScoreWidget extends StatelessWidget {
+  final ProductNovaScore? novaScore;
 
-  const ProductNovaScore({required this.novaScore});
+  const ProductNovaScoreWidget({required this.novaScore});
 
   @override
   Widget build(BuildContext context) {
@@ -135,10 +139,10 @@ class ProductNovaScore extends StatelessWidget {
   }
 }
 
-class ProductNutriscore extends StatelessWidget {
-  final String nutriscore;
+class ProductNutriscoreWidget extends StatelessWidget {
+  final ProductNutriscore? nutriscore;
 
-  const ProductNutriscore({required this.nutriscore});
+  const ProductNutriscoreWidget({required this.nutriscore});
 
   @override
   Widget build(BuildContext context) {
@@ -183,14 +187,14 @@ class ProductTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            product.barcode,
+            getTextValue(product.name),
             style: Theme.of(context).textTheme.headline4?.copyWith(
                   color: AppColors.blueDark,
                   fontWeight: FontWeight.bold,
                 ),
           ),
           Text(
-            'Cassegrain',
+            getTextValue(product.brands?[0]),
             style: Theme.of(context).textTheme.headline5?.copyWith(
                   color: Colors.grey,
                 ),
@@ -198,7 +202,7 @@ class ProductTitle extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(
-              'Petits pois et carottes à l\'étuvée avec garniture',
+              getTextValue(product.altName),
               style: Theme.of(context)
                   .textTheme
                   .headline6
@@ -209,4 +213,8 @@ class ProductTitle extends StatelessWidget {
       ),
     );
   }
+}
+
+String getTextValue(String? text) {
+  return text ?? 'Aucune information';
 }

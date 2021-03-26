@@ -13,7 +13,7 @@ class DetailsTab extends StatelessWidget {
         if (state is ResultProductState) {
           return Stack(
             children: <Widget>[
-              Image.asset(AppImages.pancakes),
+              ImageWidget(picture: state.product.picture),
               Padding(
                 padding: const EdgeInsets.only(top: 260.0),
                 child: ProductDetailsWidget(product: state.product),
@@ -25,5 +25,21 @@ class DetailsTab extends StatelessWidget {
         }
       },
     );
+  }
+}
+
+class ImageWidget extends StatelessWidget {
+  final String? picture;
+
+  const ImageWidget({required this.picture});
+
+  @override
+  Widget build(BuildContext context) {
+    if (picture != null) {
+      Image.network(picture!);
+    } else {
+      Image.asset(AppImages.pancakes);
+    }
+    return Container();
   }
 }
