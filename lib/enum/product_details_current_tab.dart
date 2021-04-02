@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/screens/tabs/caracteristics_tab.dart';
 import 'package:yuka/screens/tabs/counter_tab.dart';
 import 'package:yuka/screens/tabs/details_tab.dart';
 
@@ -46,9 +47,9 @@ Widget getProductDetailsCurrentTabWidget(ProductDetailsCurrentTab currentTab) {
     case ProductDetailsCurrentTab.summary:
       return DetailsTab();
     case ProductDetailsCurrentTab.info:
-      return CounterTab();
+      return CaracteristicsTab();
     case ProductDetailsCurrentTab.nutrition:
-      return DetailsTab();
+      return CounterTab();
     case ProductDetailsCurrentTab.nutritionValues:
       return DetailsTab();
   }

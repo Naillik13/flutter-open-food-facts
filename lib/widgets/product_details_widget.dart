@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:yuka/app_colors.dart';
 import 'package:yuka/models/product.dart';
 import 'package:yuka/utils/quality_score_util.dart';
+import 'package:yuka/widgets/components/category_row.dart';
+import 'package:yuka/widgets/components/details_row.dart';
+import 'package:yuka/widgets/components/product_title.dart';
 import 'package:yuka/widgets/separator_widget.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
@@ -22,7 +25,53 @@ class ProductDetailsWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ProductTitle(product: product),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 20.0,
+                right: 20.0,
+                bottom: 30.0,
+              ),
+              child: Text(
+                getTextValue(product.altName),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(color: Colors.black54),
+              ),
+            ),
             NutriscoreBanner(product: product),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 30.0,
+              ),
+              child: Column(
+                children: <Widget>[
+                  DetailsRow(label: 'Quantité', value: '200g'),
+                  SeparatorWidget(axis: Axis.horizontal),
+                  DetailsRow(label: 'Vendu', value: 'France'),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 30.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  CategoryRow(
+                    category: 'Végétalien',
+                    isInCategory: true,
+                  ),
+                  CategoryRow(
+                    category: 'Végétarien',
+                    isInCategory: false,
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -169,52 +218,4 @@ class ProductNutriscoreWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-class ProductTitle extends StatelessWidget {
-  final Product product;
-
-  const ProductTitle({required this.product});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20.0,
-        vertical: 30.0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            getTextValue(product.name),
-            style: Theme.of(context).textTheme.headline4?.copyWith(
-                  color: AppColors.blueDark,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          Text(
-            getTextValue(product.brands?[0]),
-            style: Theme.of(context).textTheme.headline5?.copyWith(
-                  color: Colors.grey,
-                ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Text(
-              getTextValue(product.altName),
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  ?.copyWith(color: Colors.black54),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-String getTextValue(String? text) {
-  return text ?? 'Aucune information';
 }
